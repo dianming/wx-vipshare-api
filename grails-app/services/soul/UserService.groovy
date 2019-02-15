@@ -48,6 +48,12 @@ class UserService {
         if (entity != null) {
             entity.wxUserId = id
             entity.valid = 1
+            SoWxUser wxUser = SoWxUser.findById(id);
+            if(wxUser == null){
+                return null;
+            }
+            wxUser.vip = 1;
+            wxUser.save(flush: true, failOnError: true)
             return entity.save(flush: true, failOnError: true);
         }
         return null;
@@ -75,9 +81,10 @@ class UserService {
             entity.country = user.country == null ? entity.country : user.country
             entity.avatarUrl = user.avatarUrl == null ? entity.avatarUrl : user.avatarUrl
             entity.openId = user.openId == null ? entity.openId : user.openId
-            entity.auth = 0
             return entity.save(flush: true, failOnError: true);
         }
+        user.auth = 1
+        user.vip = 0
         return user.save(flush: true, failOnError: true);
     }
 }

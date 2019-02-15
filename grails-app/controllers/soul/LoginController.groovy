@@ -44,6 +44,7 @@ class LoginController {
         SoInvitationCode entity = userService.auth(params.id as Long, params.code as String);
         res.data = entity;
         if(entity == null || entity.valid != 1){
+            res.code = "001"
             res.msg = "暗号不对哟";
         }
         render res as JSON;

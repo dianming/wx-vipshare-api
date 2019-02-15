@@ -12,6 +12,7 @@ class SoWxUser {
     String avatarUrl;//` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表132*132正方形头像），用户没有头像时该项为空。若用户更换头像，原有头像URL将失效。',
     String openId;//` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     Integer auth;
+    Integer vip;
 
     static constraints = {
         nickName nullable: true
@@ -23,5 +24,6 @@ class SoWxUser {
         avatarUrl nullable: true
         openId nullable: true
         auth nullable: true
+        vip nullable: true
     }
 }

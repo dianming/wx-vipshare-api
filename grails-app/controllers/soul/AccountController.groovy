@@ -32,6 +32,8 @@ class AccountController {
     def getList() {
         ResData res = new ResData();
         if (!userService.isAuth(params.id as Long)) {
+            res.code = "002"
+            res.msg = "账号无效"
             render res as JSON;
         }
         List<SoAccount> list = accountService.getAccountList();
