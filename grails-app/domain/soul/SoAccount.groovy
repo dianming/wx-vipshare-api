@@ -18,6 +18,7 @@ class SoAccount {
     String nickName;
     String avatarUrl;
     Integer status;
+    Date createDate;
 
     static constraints = {
         user nullable: true
@@ -31,5 +32,6 @@ class SoAccount {
         nickName nullable: true
         avatarUrl nullable: true
         status nullable: true
+        createDate nullable: true
     }
 }

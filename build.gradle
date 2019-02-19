@@ -58,6 +58,7 @@ dependencies {
     testRuntime "org.seleniumhq.selenium:selenium-chrome-driver:2.47.1"
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
+    compile "com.alibaba:druid:1.1.12"
 
     compile "com.github.binarywang:weixin-java-miniapp:3.1.0"
     compile 'mysql:mysql-connector-java:5.1.29'

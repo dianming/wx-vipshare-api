@@ -53,8 +53,8 @@ class UserService {
                 return null;
             }
             wxUser.vip = 1;
-            wxUser.save(flush: true, failOnError: true)
-            return entity.save(flush: true, failOnError: true);
+            entity.save(flush: true, failOnError: true);
+            return wxUser.save(flush: true, failOnError: true)
         }
         return null;
 

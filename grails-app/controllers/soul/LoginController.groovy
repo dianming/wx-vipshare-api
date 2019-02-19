@@ -45,7 +45,7 @@ class LoginController {
         res.data = entity;
         if(entity == null || entity.valid != 1){
             res.code = "001"
-            res.msg = "暗号不对哟";
+            res.msg = "邀请码错误";
         }
         render res as JSON;
     }

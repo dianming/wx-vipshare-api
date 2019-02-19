@@ -11,21 +11,41 @@ class AccountController {
 
     def index() {}
 
-    def use(){
+    def use() {
         ResData res = new ResData();
         SoUseRecord useRecord = new SoUseRecord();
-        bindData(useRecord,params);
-        SoAccount entity = accountService.getAccount(useRecord,params.accountId as Long);
+        bindData(useRecord, params);
+        SoAccount entity = accountService.getAccount(useRecord, params.accountId as Long);
         res.data = entity;
+        render res as JSON;
+    }
+
+    def addAccount() {
+        ResData res = new ResData();
+        SoAccount account = new SoAccount(params);
+        bindData(account, params, [exclude: ['endDate']])
+        account.endDate = params.date("endDate", "yyyy-MM-dd")
+        SoAccount soAccount = accountService.save(account);
+        res.data = soAccount
+        if (soAccount == null) {
+            res.code = "002"
+            res.msg = "添加失败";
+        }
         render res as JSON;
     }
 
     def add() {
         ResData res = new ResData();
         SoAccount account = new SoAccount(params);
-        bindData(account,params,[exclude:['endDate']])
-        account.endDate = params.date("endDate","yyyy-MM-dd")
+        bindData(account, params, [exclude: ['endDate']])
+        account.endDate = params.date("endDate", "yyyy-MM-dd")
         accountService.save(account);
+        SoWxUser soWxUser = userService.auth(params.wxUserId as Long, params.signtext as String);
+        res.data = soWxUser
+        if (soWxUser == null) {
+            res.code = "001"
+            res.msg = "邀请码错误";
+        }
         render res as JSON;
     }
 
@@ -41,4 +61,29 @@ class AccountController {
         render res as JSON;
     }
 
+    def getByList() {
+        ResData res = new ResData();
+        List<SoAccount> list = accountService.getByUserAccountList(params.wxUserId as Long);
+        res.data = list;
+        render res as JSON;
+    }
+
+    def del() {
+        ResData res = new ResData();
+        SoAccount account = new SoAccount(params);
+        bindData(account, params, [exclude: ['endDate']])
+        account.status = 0
+        accountService.updateAccount(account);
+        res.data = list;
+        render res as JSON;
+    }
+
+    def getInfo() {
+        ResData res = new ResData();
+        SoAccount info = accountService.getInfo(params.id as Long)
+        res.data = info
+        render res as JSON;
+    }
+
 }
+
