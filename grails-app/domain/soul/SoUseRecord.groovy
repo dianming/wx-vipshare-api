@@ -10,6 +10,7 @@ class SoUseRecord {
     Integer accuracy;
     String wxUserId;
     Integer accountId;
+    Date dateCreated
 
     static constraints = {
         nickName nullable: true
@@ -19,5 +20,8 @@ class SoUseRecord {
         accuracy nullable: true
         wxUserId nullable: true
         accountId nullable: true
+    }
+    static mapping = {
+        autoTimestamp: true
     }
 }

@@ -10,7 +10,7 @@ buildscript {
     }
 }
 
-version "0.1"
+version "0.3"
 group "soul"
 
 apply plugin:"eclipse"
@@ -50,14 +50,14 @@ dependencies {
     profile "org.grails.profiles:web"
     runtime "org.glassfish.web:el-impl:2.1.2-b03"
     runtime "com.h2database:h2"
-    runtime "org.apache.tomcat:tomcat-jdbc"
+//    runtime "org.apache.tomcat:tomcat-jdbc"
     runtime "com.bertramlabs.plugins:asset-pipeline-grails:2.14.8"
-    testCompile "org.grails:grails-gorm-testing-support"
-    testCompile "org.grails:grails-web-testing-support"
-    testCompile "org.grails.plugins:geb:1.1.2"
-    testRuntime "org.seleniumhq.selenium:selenium-chrome-driver:2.47.1"
-    testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
-    testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
+//    testCompile "org.grails:grails-gorm-testing-support"
+//    testCompile "org.grails:grails-web-testing-support"
+//    testCompile "org.grails.plugins:geb:1.1.2"
+//    testRuntime "org.seleniumhq.selenium:selenium-chrome-driver:2.47.1"
+//    testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
+//    testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
     compile "com.alibaba:druid:1.1.12"
 
     compile "com.github.binarywang:weixin-java-miniapp:3.1.0"

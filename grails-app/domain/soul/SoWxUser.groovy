@@ -13,6 +13,7 @@ class SoWxUser {
     String openId;//` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     Integer auth;
     Integer vip;
+    Date dateCreated
 
     static constraints = {
         nickName nullable: true
@@ -25,5 +26,8 @@ class SoWxUser {
         openId nullable: true
         auth nullable: true
         vip nullable: true
+    }
+    static mapping = {
+        autoTimestamp: true
     }
 }

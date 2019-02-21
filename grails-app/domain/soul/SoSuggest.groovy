@@ -7,7 +7,11 @@ class SoSuggest {
     String user;
     Long wxUserId;
     Long accountId;
+    Date dateCreated
 
     static constraints = {
+    }
+    static mapping = {
+        autoTimestamp: true
     }
 }

@@ -19,6 +19,7 @@ class SoAccount {
     String avatarUrl;
     Integer status;
     Date createDate;
+    Date dateCreated
 
     static constraints = {
         user nullable: true
@@ -33,5 +34,9 @@ class SoAccount {
         avatarUrl nullable: true
         status nullable: true
         createDate nullable: true
+    }
+
+    static mapping = {
+        autoTimestamp: true
     }
 }

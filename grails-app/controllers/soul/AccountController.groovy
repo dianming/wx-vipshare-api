@@ -39,8 +39,10 @@ class AccountController {
         SoAccount account = new SoAccount(params);
         bindData(account, params, [exclude: ['endDate']])
         account.endDate = params.date("endDate", "yyyy-MM-dd")
-        accountService.save(account);
         SoWxUser soWxUser = userService.auth(params.wxUserId as Long, params.signtext as String);
+        if(soWxUser != null){
+            accountService.save(account);
+        }
         res.data = soWxUser
         if (soWxUser == null) {
             res.code = "001"
